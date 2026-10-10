@@ -1,6 +1,14 @@
-import type {
-  ErrorRequestHandler,
-} from "express";
+import type { ErrorRequestHandler } from "express";
+
+export class AppError extends Error {
+  constructor(
+    public readonly statusCode: number,
+    message: string,
+  ) {
+    super(message);
+    this.name = "AppError";
+  }
+}
 
 export const errorHandler: ErrorRequestHandler = (
   err,
@@ -8,13 +16,18 @@ export const errorHandler: ErrorRequestHandler = (
   res,
   _next,
 ) => {
-  console.error(err);
+  if (err instanceof AppError) {
+    res.status(err.statusCode).json({
+      success: false,
+      message: err.message,
+    });
+    return;
+  }
 
-  res.status(err.statusCode || 500).json({
+  console.error("Unexpected API error:", err);
+
+  res.status(500).json({
     success: false,
-    message:
-      err.statusCode && err.statusCode < 500
-        ? err.message
-        : "Internal server error",
+    message: "Internal server error",
   });
 };
