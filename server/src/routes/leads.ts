@@ -147,6 +147,50 @@ leadsRouter.post("/", async (req, res) => {
   });
 });
 
+// GET /api/leads/stats
+// Returns pipeline totals across all leads owned by the authenticated user.
+leadsRouter.get("/stats", async (req, res) => {
+  const userId = getUserId(req);
+
+  const counts = await LeadModel.aggregate([
+    {
+      $match: {
+        owner: new mongoose.Types.ObjectId(userId),
+      },
+    },
+    {
+      $group: {
+        _id: "$status",
+        count: { $sum: 1 },
+      },
+    },
+  ]);
+
+  const byStatus: Record<string, number> = {};
+
+  for (const item of counts) {
+    byStatus[item._id] = item.count;
+  }
+
+  const total = Object.values(byStatus).reduce(
+    (sum, count) => sum + count,
+    0,
+  );
+
+  res.status(200).json({
+    success: true,
+    data: {
+      total,
+      new: byStatus.New ?? 0,
+      contacted: byStatus.Contacted ?? 0,
+      qualified: byStatus.Qualified ?? 0,
+      proposal: byStatus.Proposal ?? 0,
+      won: byStatus.Won ?? 0,
+      lost: byStatus.Lost ?? 0,
+    },
+  });
+});
+
 // GET /api/leads/:id
 leadsRouter.get("/:id", async (req, res) => {
   const userId = getUserId(req);
