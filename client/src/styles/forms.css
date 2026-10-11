@@ -1,0 +1,47 @@
+.field-label {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 19px;
+  color: #394457;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.field-label input, .field-label select, .field-label textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 13px;
+  color: #253044;
+  background: #fff;
+  border: 1px solid #e1e6ef;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.field-label input, .field-label select {
+  min-height: 44px;
+}
+
+.field-label textarea {
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.field-label input::placeholder, .field-label textarea::placeholder {
+  color: #a3acbb;
+  font-weight: 400;
+}
+
+.field-label input:focus, .field-label select:focus,
+.field-label textarea:focus {
+  border-color: #898af2;
+  box-shadow: 0 0 0 3px #7778ef19;
+}
+
+.field-label small {
+  color: #8c96a7;
+  font-size: 11px;
+  font-weight: 400;
+}

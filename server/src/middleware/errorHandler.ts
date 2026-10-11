@@ -1,14 +1,5 @@
 import type { ErrorRequestHandler } from "express";
-
-export class AppError extends Error {
-  constructor(
-    public readonly statusCode: number,
-    message: string,
-  ) {
-    super(message);
-    this.name = "AppError";
-  }
-}
+import { AppError, ValidationError } from "../errors";
 
 export const errorHandler: ErrorRequestHandler = (
   err,
@@ -16,6 +7,15 @@ export const errorHandler: ErrorRequestHandler = (
   res,
   _next,
 ) => {
+  if (err instanceof ValidationError) {
+    res.status(err.statusCode).json({
+      success: false,
+      message: err.message,
+      errors: err.errors,
+    });
+    return;
+  }
+
   if (err instanceof AppError) {
     res.status(err.statusCode).json({
       success: false,

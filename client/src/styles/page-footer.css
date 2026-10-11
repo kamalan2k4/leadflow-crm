@@ -1,0 +1,20 @@
+.page-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 20px 2px;
+  color: #a1aabb;
+  font-size: 10px;
+}
+
+.page-footer > span:last-child {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-dot {
+  width: 6px;
+  height: 6px;
+  box-shadow: none;
+}

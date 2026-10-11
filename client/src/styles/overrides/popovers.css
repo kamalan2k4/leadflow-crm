@@ -1,0 +1,133 @@
+.lf-menu-wrap {
+  position: relative;
+  min-width: 0;
+}
+
+.workspace-menu-wrap {
+  width: 100%;
+}
+
+.lf-popover {
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  min-width: 220px;
+  max-width: min(320px, calc(100vw - 28px));
+  padding: 12px;
+  color: #202338;
+  background: #fff;
+  border: 1px solid #e7e8f0;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(21, 27, 54, 0.16);
+  text-align: left;
+}
+
+.lf-popover > strong {
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.popover-eyebrow {
+  color: #81859a;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+}
+
+.popover-muted {
+  color: #777d91;
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.lf-popover button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 10px;
+  color: #3b4056;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  text-align: left;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.lf-popover button:hover {
+  background: #f3f4fb;
+  color: #4149bf;
+}
+
+.lf-popover .popover-danger {
+  color: #c13b4b;
+}
+
+.lf-popover .popover-danger:hover {
+  background: #fff0f1;
+  color: #a52636;
+}
+
+.workspace-popover {
+  top: calc(100% + 8px);
+  left: 0;
+  width: 300px;
+}
+
+.sidebar-profile-wrap {
+  flex: 0 0 auto;
+}
+
+.sidebar-profile-popover {
+  bottom: calc(100% + 8px);
+  left: 0;
+  width: 260px;
+}
+
+.topbar-menu-wrap {
+  display: inline-flex;
+  align-items: center;
+}
+
+.topbar-popover {
+  top: calc(100% + 10px);
+  right: 0;
+  width: 270px;
+}
+
+.avatar-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
+}
+
+.avatar-button:hover {
+  filter: brightness(1.04);
+  box-shadow: 0 0 0 3px rgba(105, 111, 230, 0.18);
+  transform: translateY(-1px);
+}
+
+.profile-avatar.avatar-button {
+  border: 0;
+}
+
+.topbar-avatar.avatar-button {
+  border: 0;
+}
+
+.notification-button[aria-expanded="true"] {
+  background: #f0f1ff;
+  color: #5158c9;
+}

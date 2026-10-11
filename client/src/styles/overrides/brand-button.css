@@ -1,0 +1,18 @@
+.brand-button {
+  width: 100%;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+.brand-button:hover .brand-symbol {
+  box-shadow: 0 0 0 4px rgba(124, 131, 246, 0.15);
+  transform: translateY(-1px);
+}
+
+.brand-button .brand-symbol {
+  transition: box-shadow 160ms ease, transform 160ms ease;
+}

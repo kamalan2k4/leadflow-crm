@@ -1,0 +1,25 @@
+.icon-button {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 33px;
+  height: 33px;
+  flex-shrink: 0;
+  color: #8490a3;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+
+.icon-button:hover:not(:disabled) {
+  color: #505d72;
+  background: #f1f3f8;
+  border-color: #e8ebf1;
+}
+
+.logout-button:hover:not(:disabled) {
+  color: #ff9ca8;
+  background: #ff718a15;
+  border-color: transparent;
+}

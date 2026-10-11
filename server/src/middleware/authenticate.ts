@@ -1,17 +1,9 @@
 import type { RequestHandler } from "express";
-import jwt, { type JwtPayload } from "jsonwebtoken";
-import { getJwtSecret } from "../config/jwt";
-import { AppError } from "./errorHandler";
+import type { JwtPayload } from "jsonwebtoken";
+import { AppError } from "../errors";
+import { verifyAuthToken } from "../utils/token";
 
-declare global {
-  namespace Express {
-    interface Request {
-      user?: {
-        id: string;
-      };
-    }
-  }
-}
+const BEARER_PREFIX = "Bearer ";
 
 export const authenticate: RequestHandler = (
   req,
@@ -20,12 +12,12 @@ export const authenticate: RequestHandler = (
 ) => {
   const authorization = req.headers.authorization;
 
-  if (!authorization?.startsWith("Bearer ")) {
+  if (!authorization?.startsWith(BEARER_PREFIX)) {
     next(new AppError(401, "Authentication required"));
     return;
   }
 
-  const token = authorization.slice(7).trim();
+  const token = authorization.slice(BEARER_PREFIX.length).trim();
 
   if (!token) {
     next(new AppError(401, "Authentication required"));
@@ -33,7 +25,7 @@ export const authenticate: RequestHandler = (
   }
 
   try {
-    const decoded = jwt.verify(token, getJwtSecret());
+    const decoded = verifyAuthToken(token);
 
     if (
       typeof decoded === "string" ||

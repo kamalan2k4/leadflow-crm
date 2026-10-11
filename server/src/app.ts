@@ -1,31 +1,20 @@
 import express from "express";
 import cors from "cors";
-import { healthRouter } from "./routes/health";
-import { authRouter } from "./routes/auth";
+import { getCorsOptions } from "./config/cors";
 import { errorHandler } from "./middleware/errorHandler";
-import { leadsRouter } from "./routes/leads";
+import { notFound } from "./middleware/notFound";
+import { apiRouter } from "./routes";
 
 export const app = express();
 
 app.disable("x-powered-by");
 
-app.use(
-  cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
-  }),
-);
+app.use(cors(getCorsOptions()));
 
 app.use(express.json({ limit: "1mb" }));
 
-app.use("/api/health", healthRouter);
-app.use("/api/auth", authRouter);
-app.use("/api/leads", leadsRouter);
+app.use("/api", apiRouter);
 
-app.use((_req, res) => {
-  res.status(404).json({
-    success: false,
-    message: "Route not found",
-  });
-});
+app.use(notFound);
 
 app.use(errorHandler);

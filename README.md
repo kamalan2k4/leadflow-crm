@@ -34,19 +34,33 @@ A full-stack lead management application for organizing prospects, tracking sale
 leadflow-crm/
 ├── client/
 │   ├── src/
-│   │   ├── lib/
-│   │   │   └── api.ts
-│   │   ├── types/
-│   │   │   └── lead.ts
-│   │   ├── App.tsx
-│   │   └── App.css
+│   │   ├── components/        # Shared UI: Modal, BrandMark, AppLoading
+│   │   ├── config/            # Environment-derived settings
+│   │   ├── features/
+│   │   │   ├── auth/          # Session + sign-in form (api, hooks, components)
+│   │   │   ├── leads/         # Pipeline data, lead editor, table (api, hooks, components)
+│   │   │   └── workspace/     # Sidebar, topbar, menus, utility dialogs
+│   │   ├── lib/               # API client and token storage
+│   │   ├── pages/             # DashboardPage
+│   │   ├── styles/            # Ordered CSS partials, entry point index.css
+│   │   ├── utils/             # Formatting and error helpers
+│   │   ├── App.tsx            # Composition root and auth gate
+│   │   └── main.tsx
 │   └── package.json
 ├── server/
 │   ├── src/
-│   │   ├── middleware/
-│   │   ├── models/
-│   │   ├── routes/
+│   │   ├── config/            # Environment, database, JWT, CORS
+│   │   ├── constants/         # Lead statuses and sources
+│   │   ├── controllers/       # HTTP handlers
+│   │   ├── errors/            # AppError, ValidationError
+│   │   ├── middleware/        # authenticate, notFound, errorHandler
+│   │   ├── models/            # Mongoose models
+│   │   ├── routes/            # Route tables, mounted under /api
+│   │   ├── services/          # Business logic and database access
 │   │   ├── tests/
+│   │   ├── types/             # Express request augmentation
+│   │   ├── utils/             # Tokens, validation, request helpers
+│   │   ├── validators/        # Zod request schemas
 │   │   ├── app.ts
 │   │   └── index.ts
 │   └── package.json
@@ -86,12 +100,13 @@ npm install
 Create a file named `.env` inside the `server` directory:
 
 ```dotenv
-MONGO_URI=mongodb+srv://<username>:<password>@<cluster-host>/<database-name>
-JWT_SECRET=replace-with-a-long-random-secret
+MONGODB_URI=mongodb+srv://<username>:<password>@<cluster-host>/<database-name>
+JWT_SECRET=replace-with-a-random-secret-of-at-least-32-characters
 PORT=5001
+CLIENT_URL=http://localhost:5173
 ```
 
-Replace the MongoDB URI placeholders with the connection string for your own database. Set `JWT_SECRET` to a long, random value. For MongoDB Atlas, create a database user and allow your development machine to connect through the project's Network Access settings.
+Replace the MongoDB URI placeholders with the connection string for your own database. Set `JWT_SECRET` to a random value of at least 32 characters; the server refuses to issue or verify tokens with a shorter secret. `CLIENT_URL` is the frontend origin allowed by CORS and defaults to `http://localhost:5173` when omitted. For MongoDB Atlas, create a database user and allow your development machine to connect through the project's Network Access settings.
 
 Keep this file private. Do not commit database credentials or JWT secrets to source control.
 
@@ -188,7 +203,7 @@ Authorization: Bearer <JWT>
 | `PATCH` | `/api/leads/:id` | Yes | Update an owned lead |
 | `DELETE` | `/api/leads/:id` | Yes | Delete an owned lead |
 
-List requests support query parameters such as `page`, `limit`, `q`, and `status`. Request bodies and exact validation rules are defined by the API route schemas.
+List requests support query parameters such as `page`, `limit`, `q`, and `status`. Request bodies and exact validation rules are defined by the schemas in `server/src/validators`.
 
 Example request to list leads:
 
@@ -224,11 +239,13 @@ Supported lead sources are `Website`, `Referral`, `LinkedIn`, `Cold Call`, and `
 
 The server applies owner-scoped access to lead operations so one account cannot use the API to access another account's leads.
 
-## Development workflow and AI assistance
+## AI development experience (Code0)
+
+**Code0 usage confirmation:** Code0 was used to build this project.
 
 Code0 was used as an AI-assisted development environment during the project workflow. It supported implementation and refinement while the source code, local execution, and build/test results remained part of the development and review process.
 
-Representative Code0-assisted tasks included:
+### Specific tasks where Code0 helped
 
 1. **Frontend development:** shaping React and TypeScript dashboard components, forms, and interface states.
 2. **REST API implementation:** developing and refining Express authentication and lead-management routes.

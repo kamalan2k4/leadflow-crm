@@ -1,0 +1,40 @@
+/* Consistent focus, hover, and non-interactive breadcrumb behavior. */
+.workspace-switcher,
+.nav-item,
+.icon-button,
+.primary-button,
+.secondary-button,
+.sidebar-tip button,
+.auth-switch button {
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease,
+    box-shadow 160ms ease, transform 160ms ease;
+}
+
+.workspace-switcher {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.workspace-switcher:hover {
+  background: rgba(120, 128, 160, 0.12);
+  border-color: rgba(120, 128, 160, 0.18);
+}
+
+.workspace-switcher:focus-visible,
+.avatar-button:focus-visible,
+.lf-popover button:focus-visible {
+  outline: 2px solid #7c83f6;
+  outline-offset: 2px;
+}
+
+.breadcrumbs {
+  cursor: default;
+  user-select: none;
+}

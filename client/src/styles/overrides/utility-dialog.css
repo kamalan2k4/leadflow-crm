@@ -1,0 +1,54 @@
+/* Workspace popovers and utility dialogs should remain usable on narrow screens. */
+.utility-modal {
+  max-height: min(86svh, 680px);
+  overflow-y: auto;
+}
+
+.utility-content {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.utility-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px 14px;
+  background: #f8f9fc;
+  border: 1px solid #eceef5;
+  border-radius: 10px;
+}
+
+.utility-detail span {
+  color: #7a8094;
+  font-size: 11px;
+}
+
+.utility-detail strong,
+.help-content strong {
+  color: #252a40;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.utility-note {
+  margin: 2px 0 0;
+  color: #777d91;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.help-content > div {
+  padding: 11px 13px;
+  background: #f8f9fc;
+  border: 1px solid #eceef5;
+  border-radius: 10px;
+}
+
+.help-content p {
+  margin: 5px 0 0;
+  color: #777d91;
+  font-size: 12px;
+  line-height: 1.55;
+}

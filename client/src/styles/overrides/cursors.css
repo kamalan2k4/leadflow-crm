@@ -1,0 +1,14 @@
+/* Keep static labels from looking clickable; controls retain a pointer cursor. */
+.nav-caption,
+.breadcrumbs,
+.stat-detail,
+.topbar-date,
+.page-footer,
+.auth-panel-top,
+.auth-story-footer {
+  cursor: default;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}

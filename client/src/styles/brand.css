@@ -1,0 +1,46 @@
+.app-loading {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 14px;
+  color: var(--muted);
+  background: #f7f8fc;
+  font-size: 14px;
+}
+
+.loading-mark, .brand-symbol {
+  display: grid;
+  place-items: center;
+  color: white;
+  background: linear-gradient(140deg, #7778f1, #4c4ed1);
+  border-radius: 11px;
+  box-shadow: 0 4px 12px #5b5ce233;
+}
+
+.loading-mark {
+  width: 48px;
+  height: 48px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-family: "Manrope", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.brand-dot {
+  color: #8586ff;
+}
+
+.brand-symbol {
+  width: 37px;
+  height: 37px;
+  flex-shrink: 0;
+  border-radius: 10px;
+}

@@ -1,0 +1,22 @@
+.inline-error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 11px 13px;
+  color: #a83340;
+  background: #fff1f2;
+  border: 1px solid #ffd8dc;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.inline-error button {
+  color: #a83340;
+  background: none;
+  border: 0;
+  font-size: 12px;
+  font-weight: 700;
+}

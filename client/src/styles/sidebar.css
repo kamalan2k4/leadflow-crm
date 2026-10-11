@@ -1,0 +1,247 @@
+.workspace {
+  display: flex;
+  min-height: 100vh;
+  background: #f7f8fc;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  width: 252px;
+  height: 100vh;
+  flex-shrink: 0;
+  padding: 25px 16px 15px;
+  color: #a3acc0;
+  background: var(--sidebar);
+  overflow-y: auto;
+}
+
+.sidebar-brand {
+  padding: 0 7px 29px;
+  color: white;
+  font-size: 21px;
+}
+
+.sidebar-brand .brand-symbol {
+  width: 34px;
+  height: 34px;
+}
+
+.workspace-switcher {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 10px;
+  margin-bottom: 28px;
+  border: 1px solid #ffffff12;
+  border-radius: 9px;
+  background: #ffffff08;
+}
+
+.workspace-avatar {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: #c6c7ff;
+  background: #5b5ce233;
+  border: 1px solid #8586ff33;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.workspace-name, .profile-info {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.workspace-name strong {
+  color: #edf0fa;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.workspace-name span {
+  color: #7f8aa2;
+  font-size: 10px;
+}
+
+.nav-caption {
+  padding: 0 10px;
+  margin: 0 0 10px;
+  color: #69758f;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 39px;
+  padding: 0 11px;
+  color: #9ba5ba;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+  transition: color 0.15s, background 0.15s;
+}
+
+.nav-item:hover {
+  color: white;
+  background: #ffffff0a;
+}
+
+.nav-item.active {
+  color: white;
+  background: #5b5ce233;
+  border-color: #8586ff24;
+}
+
+.nav-item.active-subtle {
+  color: #e0e0ff;
+  background: #ffffff0a;
+}
+
+.nav-count {
+  margin-left: auto;
+  padding: 2px 7px;
+  color: #d1d2ff;
+  background: #7778ef29;
+  border-radius: 5px;
+  font-size: 10px;
+}
+
+.pipeline-caption {
+  margin-top: 30px;
+}
+
+.nav-status-dot, .status-pill > span {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.nav-status-dot.blue, .status-pill.blue > span { color: #7398ff; }
+.nav-status-dot.violet, .status-pill.violet > span { color: #aa8bff; }
+.nav-status-dot.cyan, .status-pill.cyan > span { color: #40b9d0; }
+.nav-status-dot.amber, .status-pill.amber > span { color: #e4a64d; }
+.nav-status-dot.green, .status-pill.green > span { color: #45bd8a; }
+.nav-status-dot.red, .status-pill.red > span { color: #ed7d8d; }
+
+.sidebar-spacer {
+  flex: 1;
+  min-height: 25px;
+}
+
+.sidebar-tip {
+  padding: 14px;
+  margin: 18px 0 18px;
+  background: linear-gradient(145deg, #252943, #20243a);
+  border: 1px solid #ffffff0d;
+  border-radius: 10px;
+}
+
+.tip-icon {
+  display: grid;
+  place-items: center;
+  width: 31px;
+  height: 31px;
+  margin-bottom: 12px;
+  color: #aaaaff;
+  background: #7778ef20;
+  border-radius: 8px;
+}
+
+.sidebar-tip strong {
+  color: #f0f1fa;
+  font-size: 11px;
+}
+
+.sidebar-tip p {
+  margin: 7px 0 12px;
+  color: #929bb1;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.sidebar-tip button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+  color: #aaaaff;
+  background: none;
+  border: 0;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.sidebar-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 13px;
+  border-top: 1px solid #ffffff12;
+}
+
+.profile-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 14px 4px 3px;
+  margin-top: 8px;
+  border-top: 1px solid #ffffff12;
+}
+
+.profile-avatar, .topbar-avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: #f0efff;
+  background: linear-gradient(145deg, #7778e8, #4649a8);
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.profile-avatar {
+  width: 34px;
+  height: 34px;
+}
+
+.profile-info strong {
+  overflow: hidden;
+  color: #eef0f8;
+  font-size: 11px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-info span {
+  overflow: hidden;
+  color: #7f8aa2;
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
